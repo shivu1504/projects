@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random-Color-Generator</title>
+    <style>
+      .box{
+        height:30px;
+        width:56px;
+        border:2px solid black;
+        margin:5px;
+        padding:5px;
+      }
+    </style>
+  </head>
+  <body>
+      <div class="container">
+        <div class="box">box1</div>
+        <div class="box">box2</div>
+        <div class="box">box3</div>
+        <div class="box">box4</div>
+        <div class="box">box5</div>
+      </div>
+      <script>
+        
+          // Function to generate a random RGB color string
+          function getRandomColor() {
+            const r = Math.floor(Math.random() * 256); // Red: 0–255
+            const g = Math.floor(Math.random() * 256); // Green: 0–255
+            const b = Math.floor(Math.random() * 256); // Blue: 0–255
+            return `rgb(${r}, ${g}, ${b})`;
+          }
+        
+          // Select all elements with the class 'box'
+          const boxes = document.querySelectorAll('.box');
+        
+          // Loop through each box and apply random colors
+          boxes.forEach(box => {
+            const textColor = getRandomColor();         // Random text color
+            const backgroundColor = getRandomColor();   // Random background color
+        
+            box.style.color = textColor;
+            box.style.backgroundColor = backgroundColor;
+          });
+      </script>
+
+  </body>
+</html>
