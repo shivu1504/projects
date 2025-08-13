@@ -1,97 +1,105 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Horizontal Scroll Image Gallery</title>
-    <style>
-		*{
-			margin:0;
-			padding:0;
-			font-family:'Poppins',sans-serif;
-			box-sizing:border-box;
-		}
-		body{
-			background:#191919;
-		}
-		.gallery{
-			width:900px;
-			display:flex;
-			overflow-x:scroll;
-		}
-		.gallery div{
-			width:100%;
-			display:grid;
-			grid-template-columns:auto auto auto;
-			grid-gap:20px;
-			padding:10px;
-			flex:none;
-		}
-		.gallery div img{
-			width:100%;
-			filter:grayscale(100%);
-			transition:transform 0.5s;
-		}
-		.gallery::-webkit-scrollbar{
-			display:none;
-		}
-		.gallery-wrap{
-			display:flex;
-			align-items:center;
-			justify-content:center;
-			margin:10% auto;
-		}
-		#backBtn,#nextBtn{
-			width:50px;
-			cursor:pointer;
-			margin:40px;
-		}
-		.gallery div img:hover{
-			filter:grayscale(0);
-			cursor:pointer;
-			transform:scale(1.1);
-		}
-    </style>
-  </head>
-  <body>
-	<div class="gallery-wrap">
-		<img src="C:\Users\cw\Pictures\assests\password thunsde.png" id="backBtn>
-		<div class="gallery">
-			<div>
-				<span><img src="C:\Users\Public\Pictures\Sample Pictures\Chrysanthemum.jpg"></span>
-				<span><img src="C:\Users\Public\Pictures\Sample Pictures\Desert.jpg"></span>
-				<span><img src="C:\Users\Public\Pictures\Sample Pictures\Hydrangeas.jpg"></span>
-			</div>
-			<div>
-				<span><img src="C:\Users\Public\Pictures\Sample Pictures\Jellyfish.jpg"></span>
-				<span><img src="C:\Users\Public\Pictures\Sample Pictures\Koala.jpg"></span>
-				<span><img src="C:\Users\Public\Pictures\Sample Pictures\Lighthouse.jpg"></span>
-			</div>
-        </div>
-		<img src="C:\Users\cw\Pictures\assests\humidity.png" id="nextBtn"> 
-		
-	</div>
-      
-	  
-     <script>
-		let scrollContainer=document.querySelector(".gallery");
-		let backBtn=document.getElementById("backBtn");
-		let nextBtn=document.getElementById("nextBtn");
-		
-		scrollContainer.addEventListener("wheel",(evt)=>{
-			evt.preventDefault();
-			scrollContainer.scrollLeft+=evt.deltaY;
-		});
-		
-		nextBtn.addEventListener("click",()=>{
-			
-			scrollContainer.style.scrollBehaviour="smooth";
-			scrollContainer.scrollLeft+=900;
-		});
-		
-		backBtn.addEventListener("click",()=>{
-			scrollContainer.style.scrollBehaviour="smooth";
-			scrollContainer.scrollLeft-=900;
-		}
-	</script>
+<head>
+  <title>Horizontal Scroll Image Gallery</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      box-sizing: border-box;
+    }
 
-  </body>
+    body {
+      background: #191919;
+    }
+
+    .gallery {
+      width: 900px;
+      display: flex;
+      overflow-x: scroll;
+      scroll-behavior: smooth; /* Smooth scrolling */
+    }
+
+    .gallery div {
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-gap: 20px;
+      padding: 10px;
+      flex: none;
+    }
+
+    .gallery div img {
+      width: 100%;
+      filter: grayscale(100%);
+      transition: transform 0.5s, filter 0.5s;
+    }
+
+    .gallery::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gallery-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10% auto;
+    }
+
+    #backBtn, #nextBtn {
+      width: 50px;
+      cursor: pointer;
+      margin: 40px;
+    }
+
+    .gallery div img:hover {
+      filter: grayscale(0);
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="gallery-wrap">
+    <!-- Use real image paths or URLs -->
+    <img src="https://uploads.onecompiler.io/43598y87z/43tjfxanr/backward.png" id="backBtn">
+    
+    <div class="gallery">
+      <div>
+        <span><img src="https://uploads.onecompiler.io/43598y87z/43tjfxanr/pariatower.jpg"></span>
+        <span><img src="https://uploads.onecompiler.io/43598y87z/43tjfxanr/tajmahal.jpg"></span>
+        <span><img src="https://uploads.onecompiler.io/43598y87z/43tjfxanr/redfort.jpg"></span>
+      </div>
+      <div>
+        <span><img src="https://uploads.onecompiler.io/43598y87z/43tjfxanr/murdeshwar.jpg"></span>
+        <span><img src="https://uploads.onecompiler.io/43598y87z/43tjfxanr/indiagate.jpg"></span>
+        <span><img src="https://uploads.onecompiler.io/43598y87z/43tjfxanr/badami.jpg"></span>
+      </div>
+    </div>
+
+    <img src="https://uploads.onecompiler.io/43598y87z/43tjfxanr/forward.png" id="nextBtn">
+  </div>
+
+  <script>
+    let scrollContainer = document.querySelector(".gallery");
+    let backBtn = document.getElementById("backBtn");
+    let nextBtn = document.getElementById("nextBtn");
+
+    scrollContainer.addEventListener("wheel", (evt) => {
+      evt.preventDefault();
+      scrollContainer.scrollLeft += evt.deltaY;
+    });
+
+    nextBtn.addEventListener("click", () => {
+      scrollContainer.scrollLeft += 900;
+    });
+
+    backBtn.addEventListener("click", () => {
+      scrollContainer.scrollLeft -= 900;
+    });
+  </script>
+
+</body>
 </html>
