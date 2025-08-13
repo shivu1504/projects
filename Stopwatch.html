@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stopwatch</title>
+    <style>
+      body {
+        background: #edeaff;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .stopwatch {
+        width: 90%;
+        max-width: 600px;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+          url(https://uploads.onecompiler.io/43598y87z/43tjfxanr/pariatower.jpg);
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+        padding: 40px 0;
+        color: #fff;
+        margin: 200px auto 0;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+      }
+
+      .stopwatch h1 {
+        margin: 60px 0;
+        font-size: 64px;
+        font-weight: 300;
+      }
+
+      .buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .buttons img {
+        width: 50px;
+        margin: 0 20px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      .buttons img:hover {
+        transform: scale(1.1);
+      }
+
+      .buttons img:nth-child(3) {
+        width: 30px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="stopwatch">
+      <h1 id="displayTime">00:00:00</h1>
+      <div class="buttons">
+        <img
+          src="https://uploads.onecompiler.io/43598y87z/43tjkvqw8/stop.png"
+          onclick="watchstop()"
+          alt="Stop"
+        />
+        <img
+          src="https://uploads.onecompiler.io/43598y87z/43tjkvqw8/start.png"
+          onclick="watchstart()"
+          alt="Start"
+        />
+        <img
+          src="https://uploads.onecompiler.io/43598y87z/43tjkvqw8/reset.png"
+          onclick="watchreset()"
+          alt="Reset"
+        />
+      </div>
+    </div>
+
+    <script>
+      let [seconds, minutes, hours] = [0, 0, 0];
+      let displayTime = document.getElementById("displayTime");
+      let timer = null;
+
+      function stopwatch() {
+        seconds++;
+        if (seconds === 60) {
+          seconds = 0;
+          minutes++;
+          if (minutes === 60) {
+            minutes = 0;
+            hours++;
+          }
+        }
+
+        let h = hours < 10 ? "0" + hours : hours;
+        let m = minutes < 10 ? "0" + minutes : minutes;
+        let s = seconds < 10 ? "0" + seconds : seconds;
+
+        displayTime.innerHTML = `${h}:${m}:${s}`;
+      }
+
+      function watchstart() {
+        if (timer !== null) {
+          clearInterval(timer);
+        }
+        timer = setInterval(stopwatch, 1000);
+      }
+
+      function watchstop() {
+        clearInterval(timer);
+      }
+
+      function watchreset() {
+        clearInterval(timer);
+        [seconds, minutes, hours] = [0, 0, 0];
+        displayTime.innerHTML = "00:00:00";
+      }
+    </script>
+  </body>
+</html>
